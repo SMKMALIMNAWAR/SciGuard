@@ -87,7 +87,42 @@
     <label>Catatan</label>
     <textarea rows="3"></textarea>
 
-    <button>Hantar Rekod</button>
+    <label>Email Penerima PDF</label>
+    <input type="email" id="email" required />
+
+    <button type="button" onclick="submitForm()">Hantar Rekod</button>
+
+    <script>
+      async function submitForm() {
+        const inputs = document.querySelectorAll('input');
+        const textareas = document.querySelectorAll('textarea');
+
+        const data = {
+          nama: inputs[0].value,
+          tarikhPinjam: inputs[1].value,
+          masaPinjam: inputs[2].value,
+          namaAlat: inputs[3].value,
+          tujuan: textareas[0].value,
+          keadaanPinjam: textareas[1].value,
+          tarikhPulang: inputs[4].value,
+          masaPulang: inputs[5].value,
+          keadaanPulang: textareas[2].value,
+          catatan: textareas[3].value,
+          email: document.getElementById('email').value
+        };
+
+        const scriptURL = "PASTE_YOUR_SCRIPT_URL_HERE";
+
+        await fetch(scriptURL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(data)
+        });
+
+        alert("Rekod berjaya dihantar!");
+      }
+    </script>
   </div>
 </body>
 </html>
