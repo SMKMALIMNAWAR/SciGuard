@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rekod Penggunaan Alat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f7f7f7;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rekod Penggunaan Alat</h1>
+
+    <label>Nama Peminjam</label>
+    <input type="text" />
+
+    <label>Tarikh Pinjam</label>
+    <input type="date" />
+
+    <label>Masa Pinjam</label>
+    <input type="time" />
+
+    <label>Nama Alat / Peralatan</label>
+    <input type="text" />
+
+    <label>Kuantiti</label>
+    <input type="number" />
+
+    <label>Tujuan Penggunaan</label>
+    <textarea rows="3"></textarea>
+
+    <label>Keadaan Alat Semasa Dipinjam</label>
+    <textarea rows="3"></textarea>
+
+    <label>Tarikh Pulang</label>
+    <input type="date" />
+
+    <label>Masa Pulang</label>
+    <input type="time" />
+
+    <label>Keadaan Alat Semasa Dipulangkan</label>
+    <textarea rows="3"></textarea>
+
+    <button>Hantar Rekod</button>
+  </div>
+</body>
+</html>
