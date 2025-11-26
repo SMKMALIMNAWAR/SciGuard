@@ -1,128 +1,85 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rekod Penggunaan Alat</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f7f7f7;
-    }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      background: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rekod Penggunaan Alat</title>
+<style>
+  body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+  .container { max-width: 700px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+  label { margin-top: 12px; display: block; font-weight: bold; }
+  input, textarea { width: 100%; padding: 10px; margin-top: 5px; border-radius: 6px; border: 1px solid #ccc; }
+  button { margin-top: 20px; padding: 12px; width: 100%; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
+  button:hover { background: #0056b3; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Rekod Penggunaan Alat</h1>
+<div class="container">
+<h2>Rekod Penggunaan Alat</h2>
 
-    <label>Nama Peminjam</label>
-    <input type="text" />
+<label>Nama Peminjam</label>
+<input id="nama">
 
-    <label>Tarikh Pinjam</label>
-    <input type="date" />
+<label>Tarikh Pinjam</label>
+<input type="date" id="tarikhPinjam">
 
-    <label>Masa Pinjam</label>
-    <input type="time" />
+<label>Masa Pinjam</label>
+<input type="time" id="masaPinjam">
 
-    <label>Nama Alat / Peralatan</label>
-    <input type="text" />
+<label>Nama Alat</label>
+<input id="namaAlat">
 
-    
+<label>Tujuan</label>
+<textarea id="tujuan"></textarea>
 
-    <label>Tujuan Penggunaan</label>
-    <textarea rows="3"></textarea>
+<label>Keadaan Pinjam</label>
+<textarea id="keadaanPinjam"></textarea>
 
-    <label>Keadaan Alat Semasa Dipinjam</label>
-    <textarea rows="3"></textarea>
+<label>Tarikh Pulang</label>
+<input type="date" id="tarikhPulang">
 
-    <label>Tarikh Pulang</label>
-    <input type="date" />
+<label>Masa Pulang</label>
+<input type="time" id="masaPulang">
 
-    <label>Masa Pulang</label>
-    <input type="time" />
+<label>Keadaan Pulang</label>
+<textarea id="keadaanPulang"></textarea>
 
-    <label>Keadaan Alat Semasa Dipulangkan</label>
-    <textarea rows="3"></textarea>
+<label>Catatan</label>
+<textarea id="catatan"></textarea>
 
-    <label>Catatan</label>
-    <textarea rows="3"></textarea>
+<label>Email Penerima PDF</label>
+<input id="email" type="email">
 
-    <label>Email Penerima PDF</label>
-    <input type="email" id="email" required />
+<button onclick="submitForm()">Hantar Rekod</button>
+</div>
 
-    <button type="button" onclick="submitForm()">Hantar Rekod</button>
+<script>
+async function submitForm() {
+  const data = {
+    nama: document.getElementById("nama").value,
+    tarikhPinjam: document.getElementById("tarikhPinjam").value,
+    masaPinjam: document.getElementById("masaPinjam").value,
+    namaAlat: document.getElementById("namaAlat").value,
+    tujuan: document.getElementById("tujuan").value,
+    keadaanPinjam: document.getElementById("keadaanPinjam").value,
+    tarikhPulang: document.getElementById("tarikhPulang").value,
+    masaPulang: document.getElementById("masaPulang").value,
+    keadaanPulang: document.getElementById("keadaanPulang").value,
+    catatan: document.getElementById("catatan").value,
+    email: document.getElementById("email").value
+  };
 
-    <script>
-      async function submitForm() {
-        const inputs = document.querySelectorAll('input');
-        const textareas = document.querySelectorAll('textarea');
+  const scriptURL = "https://script.google.com/macros/s/AKfycbw2oaEGdC9EIyn8jCof05QpX9XD9KjM3FDSKtd-oNK62Q_weq9T9lY4blQ0X0NfRLMD/exec"; // ganti dengan URL Web App
 
-        const data = {
-          nama: inputs[0].value,
-          tarikhPinjam: inputs[1].value,
-          masaPinjam: inputs[2].value,
-          namaAlat: inputs[3].value,
-          tujuan: textareas[0].value,
-          keadaanPinjam: textareas[1].value,
-          tarikhPulang: inputs[4].value,
-          masaPulang: inputs[5].value,
-          keadaanPulang: textareas[2].value,
-          catatan: textareas[3].value,
-          email: document.getElementById('email').value
-        };
+  await fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
 
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwcY2EDhcObRT2UYocpPGY8QQgratcjZPeMbxTMrtFTQaooeGl_mA-R4XBhUg9L2lQS/exec";
-
-        await fetch(scriptURL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(data)
-        });
-
-        alert("Rekod berjaya dihantar!");
-      }
-    </script>
-  </div>
+  alert("Rekod berjaya dihantar!");
+}
+</script>
 </body>
 </html>
